@@ -28,6 +28,7 @@ repos:
       meta-python:
       meta-networking:
       meta-perl:
+      meta-filesystems:
 
   meta-qt5:
     url: https://github.com/meta-qt5/meta-qt5/
@@ -41,6 +42,16 @@ repos:
     layers:
       meta-echo:
       meta-distrox:
+
+  meta-selinux:
+    url: https://git.yoctoproject.org/git/meta-selinux
+    path: layers/meta-selinux
+    refspec: scarthgap
+
+  meta-virtualization:
+    url: https://git.yoctoproject.org/git/meta-virtualization
+    path: layers/meta-virtualization
+    refspec: scarthgap
 
 bblayers_conf_header:
   standard: |
@@ -57,7 +68,7 @@ local_conf_header:
     USER_CLASSES = "buildstats"
     PATCHRESOLVE = "noop"
     LICENSE_FLAGS_ACCEPTED += "synaptics-killswitch"
-    IMAGE_INSTALL:append = " openssh echo"
+    IMAGE_INSTALL:append = " openssh echo podman ntp"
   sysd_conf: |
     SYSTEMD_AUTO_ENABLE_pn-openssh = "enable"
   debug-tweaks: |
